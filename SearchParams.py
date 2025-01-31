@@ -15,12 +15,15 @@ class SearchParams:
 
     def get_url(self):
         base_url = (
-            "https://www.rightmove.co.uk/api/_mapSearch?locationIdentifier=REGION%5E94019"
+            "https://www.rightmove.co.uk/api/_mapSearch?locationIdentifier=USERDEFINEDAREA%5E%7B%22polylines%22%3A"
+            "%22uxkeIjdzLtDElN_GxStNdQig%40~B%7Bf%40hAma%40aBaNdHyh%40%7DMu%7D%40yL%7Be%40wR_%5DqH_MwFcIaJ%7BJyF_McU"
+            "%60%40yIrToJpHaGpNTpGwSb%5EjKvPbD%7CIaNhUcFd_%40rAjLd%40fSr%40hMpCrLq%40%60c%40zRnq%40bXPTxS%7DMxm"
+            "%40zUm_AlOfJzIvJ%22%7D "
             "&minBedrooms={min_bedrooms}&maxPrice={max_price}&minPrice={min_price}"
             "&numberOfPropertiesPerPage=499&radius=0.0&sortType=2&index=0"
             "&propertyTypes%5B0%5D=flat&includeSSTC=false&viewType=MAP"
-            "&channel=BUY&areaSizeUnit=sqft&currencyCode=GBP&viewport"
-            "=-2.28871%2C-2.20657%2C53.4564%2C53.5021&isFetching=false"
+            "&channel=BUY&areaSizeUnit=sqft&currencyCode=GBP&viewport=-2.26241%2C-2.22134%2C53.4673%2C53.4902"
+            "&isFetching=false "
         )
         return base_url.format(
             min_bedrooms=self.min_bedrooms,
