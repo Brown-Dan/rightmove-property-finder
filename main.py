@@ -37,6 +37,9 @@ def retrieve_properties_by_id_and_filter(property_id, filter_params):
             ground_rent = living_costs["annualGroundRent"]
             lease_length = tenure["yearsRemainingOnLease"]
 
+            if filter_params.contains_forbidden_words(property_data["text"]["description"]):
+                return
+
             if annual_service_charge is None or ground_rent is None or lease_length is None:
                 return
 
@@ -48,6 +51,7 @@ def retrieve_properties_by_id_and_filter(property_id, filter_params):
 
 if __name__ == "__main__":
     search_params = SearchParamsBuilder().set_min_bedrooms(2).set_min_price(150000).set_max_price(190000).build()
-    filter_params = FilterParamsBuilder().set_max_ground_rent(200).set_max_service_charge(1600).set_min_lease_length(100).build()
-    list(map(lambda property_data: retrieve_properties_by_id_and_filter(property_data["id"], filter_params), get_properties(search_params.get_url())))
-
+    filter_params = FilterParamsBuilder().set_max_ground_rent(200).set_max_service_charge(1600).set_min_lease_length(
+        100).set_forbidden_words(["investors only", "cash only", "auction", "tenanted"]).build()
+    list(map(lambda property_data: retrieve_properties_by_id_and_filter(property_data["id"], filter_params),
+             get_properties(search_params.get_url())))
